@@ -9,6 +9,9 @@ package com.poecpoec.agence;
  */
 public class Aeroport
 {
+    /**
+     * Nom de l'aéroport 
+     */
     private String nom;
 
     /* (non-Javadoc)
@@ -34,7 +37,7 @@ public class Aeroport
      */
     public Aeroport()
     {
-        // TODO Auto-generated constructor stub
+        super();
     }
 
     /**
