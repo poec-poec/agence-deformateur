@@ -14,8 +14,9 @@ public class Main
 
     /**
      * @param args
+     * @throws ClassNotFoundException 
      */
-    public static void main(String[] args) {
+    public static void main(String[] args) throws ClassNotFoundException {
         /*
          * Tests unitaires itération #1
          */
@@ -39,6 +40,13 @@ public class Main
          */
         System.out.println("Test it#3");
         System.out.println(paris);
+        
+        /*
+         * UT it#4 : test de la connexion à la BDD
+         */
+        // Etape 1 : chargement du driver
+        Class.forName("com.mysql.jdbc.Driver");
+        
     }
 
 }
