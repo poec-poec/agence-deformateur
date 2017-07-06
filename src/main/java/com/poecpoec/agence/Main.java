@@ -16,9 +16,10 @@ public class Main
      * @param args
      */
     public static void main(String[] args) {
-        System.out.println("Hello Poec Poec !");
-        Test test = new Test();
-        test.afficher();
+        Aeroport cdg = new Aeroport("CDG");
+        Ville paris = new Ville("Paris", "France");
+        System.out.println(cdg);
+        System.out.println(paris);
     }
 
 }
