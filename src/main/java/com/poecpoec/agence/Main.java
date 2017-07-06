@@ -3,7 +3,9 @@
  */
 package com.poecpoec.agence;
 
-
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
 
 /**
  * @author Seme
@@ -15,8 +17,9 @@ public class Main
     /**
      * @param args
      * @throws ClassNotFoundException 
+     * @throws SQLException 
      */
-    public static void main(String[] args) throws ClassNotFoundException {
+    public static void main(String[] args) throws ClassNotFoundException, SQLException {
         /*
          * Tests unitaires itération #1
          */
@@ -46,6 +49,9 @@ public class Main
          */
         // Etape 1 : chargement du driver
         Class.forName("com.mysql.jdbc.Driver");
+        // Etape 2 : création de la connexion
+        String dsn = "jdbc:mysql://localhost:3306/agence";
+        Connection connexion = DriverManager.getConnection(dsn, "user", "password");
         
     }
 
