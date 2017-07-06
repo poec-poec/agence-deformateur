@@ -3,6 +3,8 @@
  */
 package com.poecpoec.agence;
 
+
+
 /**
  * @author Seme
  *
@@ -15,6 +17,8 @@ public class Main
      */
     public static void main(String[] args) {
         System.out.println("Hello Poec Poec !");
+        Test test = new Test();
+        test.afficher();
     }
 
 }
