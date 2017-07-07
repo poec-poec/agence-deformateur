@@ -28,12 +28,14 @@ public class Aeroport
         this.villes = villes;
         this.nom = nom;
     }
-    
+
     /**
      * Ajoute une ville desservie par l'aéroport
+     * 
      * @param ville
      */
-    public void ajouterVille(Ville ville) {
+    public void ajouterVille(Ville ville)
+    {
         this.villes.add(ville);
         // je fais le lien dans l'autre direction ville->aéroport
         ville.ajouterAeroport(this);
@@ -46,15 +48,17 @@ public class Aeroport
     @Override
     public String toString()
     {
-        StringBuffer sBuffer = new StringBuffer("Aeroport [villes=");
+        StringBuffer sBuffer = new StringBuffer(
+                "Aeroport [nom= " + this.nom + ", villes=");
         // boucle de parcours des villes desservies
         for (Ville ville : villes)
         {
-            sBuffer.append("[Ville nom=" + ville.getNom() + ", pays=" + ville.getPays() + "],");
+            sBuffer.append("[Ville nom=" + ville.getNom() + ", pays="
+                    + ville.getPays() + "],");
         }
-        sBuffer = new StringBuffer(sBuffer.substring(0, sBuffer.length()-1));
+        sBuffer = new StringBuffer(sBuffer.substring(0, sBuffer.length() - 1));
         sBuffer.append("]");
-        
+
         return sBuffer.toString();
     }
 
