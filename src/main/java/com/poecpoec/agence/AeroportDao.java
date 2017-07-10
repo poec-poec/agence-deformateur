@@ -14,7 +14,7 @@ import java.util.List;
 /**
  * @author Seme
  */
-public class AeroportDao implements IAeroportDataRecovery
+public class AeroportDao implements IDataRecovery<Aeroport>
 {
 
     /**
