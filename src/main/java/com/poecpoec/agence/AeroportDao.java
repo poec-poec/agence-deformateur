@@ -32,6 +32,9 @@ public class AeroportDao implements IDataRecovery<Aeroport>
      */
     public List<Aeroport> findAll()
     {
+        // DAO utilisés
+        VilleDao villeDao = new VilleDao();
+
         List<Aeroport> aeroports = new ArrayList<>();
         try
         {
@@ -52,9 +55,40 @@ public class AeroportDao implements IDataRecovery<Aeroport>
                 // je crée un aéroport vide
                 Aeroport aeroport = new Aeroport();
                 aeroport.setNom(resultats.getString("nom"));
+                aeroport.setIdAero(resultats.getInt("idAero"));
+
+                // je vais chercher dans la table de lien les id des villes
+                // desservies
+                Statement statementVilles = connexion.createStatement();
+                // requête qui renvoie la liste des villes pour un aéroport
+                // donné
+                ResultSet idDesVilles = statementVilles
+                        .executeQuery("SELECT idVille" + " FROM aeroport_ville"
+                                + " WHERE idAero = " + aeroport.getIdAero());
+                // on parcours les id
+                while (idDesVilles.next())
+                {
+                    // je récupère juste l'id
+                    int idVille = idDesVilles.getInt("idVille");
+                    // je récupère le POJO Ville grâce à villeDao par la méthode
+                    // findById
+                    // qui prend en paramètre l'idVille qu'on vient d'extraire
+                    // du ResultSet
+                    Ville ville = villeDao.findById(idVille);
+                    // j'insère la ville dans la liste des villes desservies
+                    aeroport.ajouterVille(ville);
+                }
+
                 // je l'ajoute à ma liste
                 aeroports.add(aeroport);
-            }
+
+                // fermeture du résultat
+                idDesVilles.close();
+                statementVilles.close();
+
+            } // fin de la boucle de parcours des résultats du SELECT * FROM
+              // aeroport
+
             // Etape 6 : fermer le résultat
             resultats.close();
             // Etape 7 : fermer le statement
@@ -84,6 +118,8 @@ public class AeroportDao implements IDataRecovery<Aeroport>
     @Override
     public Aeroport findById(int id)
     {
+        // DAO utilisés
+        VilleDao villeDao = new VilleDao();
         Aeroport aeroport = new Aeroport();
         try
         {
@@ -96,13 +132,39 @@ public class AeroportDao implements IDataRecovery<Aeroport>
             // Etape 3 : création du statement
             Statement statement = connexion.createStatement();
             // Etape 4 : Exécuter la requête SQL
-            ResultSet resultats = statement
-                    .executeQuery("SELECT * FROM aeroport WHERE idAero = " + id);
+            ResultSet resultats = statement.executeQuery(
+                    "SELECT * FROM aeroport WHERE idAero = " + id);
             // Etape 5 : boucle de parcours des résultats
             if (resultats.next())
             {
                 // je crée un aéroport vide
+                aeroport.setIdAero(id);
                 aeroport.setNom(resultats.getString("nom"));
+                // je vais chercher dans la table de lien les id des villes
+                // desservies
+                Statement statementVilles = connexion.createStatement();
+                // requête qui renvoie la liste des villes pour un aéroport
+                // donné
+                ResultSet idDesVilles = statementVilles
+                        .executeQuery("SELECT idVille" + " FROM aeroport_ville"
+                                + " WHERE idAero = " + id);
+                // on parcours les id
+                while (idDesVilles.next())
+                {
+                    // je récupère juste l'id
+                    int idVille = idDesVilles.getInt("idVille");
+                    // je récupère le POJO Ville grâce à villeDao par la méthode
+                    // findById
+                    // qui prend en paramètre l'idVille qu'on vient d'extraire
+                    // du ResultSet
+                    Ville ville = villeDao.findById(idVille);
+                    // j'insère la ville dans la liste des villes desservies
+                    aeroport.ajouterVille(ville);
+                }
+
+                // fermeture du résultat
+                idDesVilles.close();
+                statementVilles.close();
             }
             else
             {

@@ -48,7 +48,7 @@ public class Main
         System.out.println(paris);
 
         /*
-         * UT it#4 : test de la connexion à la BDD
+         * UT it#4 : test de la connexion à la BDD (modifié par l'it8)
          */
         System.out.println("---------");
         System.out.println("Test it#4");
@@ -68,7 +68,7 @@ public class Main
         System.out.println(aeroports);
         
         /*
-         * UT it#6: test de la recherche par identifiant
+         * UT it#6: test de la recherche par identifiant (modifié par l'it8)
          */
         System.out.println("---------");
         System.out.println("Test it#6");
@@ -76,6 +76,21 @@ public class Main
         Aeroport aeroport = aeroportDao.findById(654);
         aeroport = aeroportDao.findById(1);
         System.out.println(aeroport);
+        
+        /*
+         * UT it#7: test de la recherche par identifiant
+         */
+        System.out.println("---------");
+        System.out.println("Test it#7");
+        System.out.println("---------");
+        // j'instancie du DAO de ville
+        VilleDao villeDao = new VilleDao();
+        Ville ville = villeDao.findById(1);
+        System.out.println(ville);
+        // toutes les villes
+        List<Ville> villes = villeDao.findAll();
+        System.out.println(villes);
+        
         
 
     }
