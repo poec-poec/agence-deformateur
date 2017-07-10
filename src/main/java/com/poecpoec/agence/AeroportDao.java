@@ -52,6 +52,7 @@ public class AeroportDao implements IDataRecovery<Aeroport>
                 // je crée un aéroport vide
                 Aeroport aeroport = new Aeroport();
                 aeroport.setNom(resultats.getString("nom"));
+                aeroport.setIdAero(resultats.getInt("idAero"));
                 // je l'ajoute à ma liste
                 aeroports.add(aeroport);
             }
@@ -102,6 +103,7 @@ public class AeroportDao implements IDataRecovery<Aeroport>
             if (resultats.next())
             {
                 // je crée un aéroport vide
+                aeroport.setIdAero(id);
                 aeroport.setNom(resultats.getString("nom"));
             }
             else
