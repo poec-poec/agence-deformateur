@@ -11,16 +11,35 @@ import java.util.List;
  */
 public class Ville
 {
-    private List<Aeroport> aeroportDesservis;
+    /** Identifiant technique */
+    private int idVille;
+    /** Liste des aéroports qui desservent la ville */
+    private List<Aeroport> aeroports;
+    /** Nom de la ville */
     private String nom;
+    /** Pays */
     private String pays;
 
     /**
-     * 
+     * Constructeur par défaut
      */
     public Ville()
     {
-        this.aeroportDesservis = new ArrayList<>();
+        this.aeroports = new ArrayList<>();
+    }
+
+    /**
+     * @param id
+     * @param nom
+     * @param pays
+     */
+    public Ville(int id, String nom, String pays)
+    {
+        super();
+        this.idVille = id;
+        this.nom = nom;
+        this.pays = pays;
+        this.aeroports = new ArrayList<>();
     }
 
     /**
@@ -32,7 +51,7 @@ public class Ville
         super();
         this.nom = nom;
         this.pays = pays;
-        this.aeroportDesservis = new ArrayList<>();
+        this.aeroports = new ArrayList<>();
     }
 
     /**
@@ -45,19 +64,37 @@ public class Ville
         super();
         this.nom = nom;
         this.pays = pays;
-        this.aeroportDesservis = aeroportDesservis;
+        this.aeroports = aeroportDesservis;
     }
 
-    public void ajouterAeroport(Aeroport aeroport) {
-        this.aeroportDesservis.add(aeroport);
+    public void ajouterAeroport(Aeroport aeroport)
+    {
+        this.aeroports.add(aeroport);
     }
-    
+
+    /**
+     * @return the id
+     */
+    public int getId()
+    {
+        return idVille;
+    }
+
+    /**
+     * @param id
+     *            the id to set
+     */
+    public void setId(int id)
+    {
+        this.idVille = id;
+    }
+
     /**
      * @return the aeroportDesservis
      */
     public List<Aeroport> getAeroportDesservis()
     {
-        return aeroportDesservis;
+        return aeroports;
     }
 
     /**
@@ -82,7 +119,7 @@ public class Ville
      */
     public void setAeroportDesservis(List<Aeroport> aeroportDesservis)
     {
-        this.aeroportDesservis = aeroportDesservis;
+        this.aeroports = aeroportDesservis;
     }
 
     /**
@@ -112,8 +149,8 @@ public class Ville
     {
         return "Ville [" + (nom != null ? "nom=" + nom + ", " : "")
                 + (pays != null ? "pays=" + pays + ", " : "")
-                + (aeroportDesservis != null
-                        ? "aeroportDesservis=" + aeroportDesservis
+                + (aeroports != null
+                        ? "aeroportDesservis=" + aeroports
                         : "")
                 + "]";
     }
