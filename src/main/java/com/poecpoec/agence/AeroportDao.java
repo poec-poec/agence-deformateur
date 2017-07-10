@@ -77,4 +77,57 @@ public class AeroportDao implements IAeroportDataRecovery
 
     }
 
+    /*
+     * (non-Javadoc)
+     * @see com.poecpoec.agence.IAeroportDataRecovery#findById(int)
+     */
+    @Override
+    public Aeroport findById(int id)
+    {
+        Aeroport aeroport = new Aeroport();
+        try
+        {
+            // Etape 1 : chargement du driver
+            Class.forName("com.mysql.jdbc.Driver");
+            // Etape 2 : création de la connexion
+            String dsn = "jdbc:mysql://localhost:3306/agence";
+            Connection connexion = DriverManager.getConnection(dsn, "user",
+                    "password");
+            // Etape 3 : création du statement
+            Statement statement = connexion.createStatement();
+            // Etape 4 : Exécuter la requête SQL
+            ResultSet resultats = statement
+                    .executeQuery("SELECT * FROM aeroport WHERE idAero = " + id);
+            // Etape 5 : boucle de parcours des résultats
+            if (resultats.next())
+            {
+                // je crée un aéroport vide
+                aeroport.setNom(resultats.getString("nom"));
+            }
+            else
+            {
+                throw new SQLException(
+                        "Aucun aéroport ne correspond à l'identifiant indiqué.");
+            }
+            // Etape 6 : fermer le résultat
+            resultats.close();
+            // Etape 7 : fermer le statement
+            statement.close();
+            // Etape 8 : fermer la connexion
+            connexion.close();
+        }
+        catch (ClassNotFoundException e)
+        {
+            System.out.println(
+                    "Impossible de charger le driver. Vérifier votre classpath.");
+        }
+        catch (SQLException e)
+        {
+            System.out.println("Erreur SQL. Voir ci-après.");
+            System.out.println(e.getMessage());
+        }
+        // je retourne l'aéroport trouvé dans la BDD
+        return aeroport;
+    }
+
 }

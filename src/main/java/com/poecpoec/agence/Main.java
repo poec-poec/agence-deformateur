@@ -25,7 +25,9 @@ public class Main
         /*
          * Tests unitaires itération #1
          */
+        System.out.println("---------");
         System.out.println("Test it#1");
+        System.out.println("---------");
         Aeroport cdg = new Aeroport("CDG");
         Ville paris = new Ville("Paris", "France");
         Ville londres = new Ville("Londres", "UK");
@@ -35,7 +37,9 @@ public class Main
         /*
          * UT it#2
          */
+        System.out.println("---------");
         System.out.println("Test it#2");
+        System.out.println("---------");
         cdg.ajouterVille(paris);
         cdg.ajouterVille(londres);
         System.out.println(cdg);
@@ -43,12 +47,17 @@ public class Main
         /*
          * UT it#3
          */
+        System.out.println("---------");
         System.out.println("Test it#3");
+        System.out.println("---------");
         System.out.println(paris);
 
         /*
          * UT it#4 : test de la connexion à la BDD
          */
+        System.out.println("---------");
+        System.out.println("Test it#4");
+        System.out.println("---------");
         // déclaration des variables
         List<Aeroport> aeroports = new ArrayList<>();
 
@@ -62,6 +71,17 @@ public class Main
 
         // j'affiche mes aéroports
         System.out.println(aeroports);
+        
+        /*
+         * UT it#6: test de la recherche par identifiant
+         */
+        System.out.println("---------");
+        System.out.println("Test it#6");
+        System.out.println("---------");
+        Aeroport aeroport = aeroportDao.findById(654);
+        aeroport = aeroportDao.findById(1);
+        System.out.println(aeroport);
+        
 
     }
 
