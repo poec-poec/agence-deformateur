@@ -11,10 +11,10 @@ import java.util.List;
  */
 public class Ville
 {
-    /** Identifiant technique */
-    private int            idVille;
     /** Liste des aéroports qui desservent la ville */
     private List<Aeroport> aeroports;
+    /** Identifiant technique */
+    private int            idVille;
     /** Nom de la ville */
     private String         nom;
     /** Pays */
@@ -73,28 +73,19 @@ public class Ville
     }
 
     /**
-     * @return the id
-     */
-    public int getId()
-    {
-        return idVille;
-    }
-
-    /**
-     * @param id
-     *            the id to set
-     */
-    public void setId(int id)
-    {
-        this.idVille = id;
-    }
-
-    /**
      * @return the aeroportDesservis
      */
     public List<Aeroport> getAeroportDesservis()
     {
         return aeroports;
+    }
+
+    /**
+     * @return the id
+     */
+    public int getId()
+    {
+        return idVille;
     }
 
     /**
@@ -120,6 +111,15 @@ public class Ville
     public void setAeroportDesservis(List<Aeroport> aeroportDesservis)
     {
         this.aeroports = aeroportDesservis;
+    }
+
+    /**
+     * @param id
+     *            the id to set
+     */
+    public void setId(int id)
+    {
+        this.idVille = id;
     }
 
     /**
