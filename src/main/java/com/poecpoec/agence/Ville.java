@@ -12,13 +12,13 @@ import java.util.List;
 public class Ville
 {
     /** Identifiant technique */
-    private int idVille;
+    private int            idVille;
     /** Liste des aéroports qui desservent la ville */
     private List<Aeroport> aeroports;
     /** Nom de la ville */
-    private String nom;
+    private String         nom;
     /** Pays */
-    private String pays;
+    private String         pays;
 
     /**
      * Constructeur par défaut
@@ -142,6 +142,7 @@ public class Ville
 
     /*
      * (non-Javadoc)
+     * 
      * @see java.lang.Object#toString()
      */
     @Override
@@ -149,10 +150,7 @@ public class Ville
     {
         return "Ville [" + (nom != null ? "nom=" + nom + ", " : "")
                 + (pays != null ? "pays=" + pays + ", " : "")
-                + (aeroports != null
-                        ? "aeroportDesservis=" + aeroports
-                        : "")
-                + "]";
+                + (aeroports != null ? "aeroportDesservis=" + aeroports : "") + "]";
     }
 
 }

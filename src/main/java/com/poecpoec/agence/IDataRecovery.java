@@ -22,8 +22,7 @@ public interface IDataRecovery<T>
      * 
      * @param id
      *            L'identifiant du BO
-     * @return Le BO de la BDD qui possède l'id passé
-     *         en paramètre.
+     * @return Le BO de la BDD qui possède l'id passé en paramètre.
      */
     public abstract T findById(int id);
 }

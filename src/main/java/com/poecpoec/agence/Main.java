@@ -56,17 +56,15 @@ public class Main
         // déclaration des variables
         List<Aeroport> aeroports = new ArrayList<>();
 
-
         // j'ai besoin du DAO, alors je l'instancie
         AeroportDao aeroportDao = new AeroportDao();
         // j'appelle la méthode pour récupérer tous les objets de classe
         // Aéroport de la BDD à l'aide du DAO Aéroport
         aeroports = aeroportDao.findAll();
-        
 
         // j'affiche mes aéroports
         System.out.println(aeroports);
-        
+
         /*
          * UT it#6: test de la recherche par identifiant (modifié par l'it8)
          */
@@ -76,7 +74,7 @@ public class Main
         Aeroport aeroport = aeroportDao.findById(654);
         aeroport = aeroportDao.findById(1);
         System.out.println(aeroport);
-        
+
         /*
          * UT it#7: test de la recherche par identifiant
          */
@@ -90,8 +88,6 @@ public class Main
         // toutes les villes
         List<Ville> villes = villeDao.findAll();
         System.out.println(villes);
-        
-        
 
     }
 
