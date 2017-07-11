@@ -6,6 +6,11 @@ package com.poecpoec.agence;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.poecpoec.agence.dao.AeroportDao;
+import com.poecpoec.agence.dao.VilleDao;
+import com.poecpoec.agence.model.Aeroport;
+import com.poecpoec.agence.model.Ville;
+
 /**
  * @author Seme
  */

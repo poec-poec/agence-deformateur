@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.poecpoec.agence;
+package com.poecpoec.agence.interfaces;
 
 import java.util.List;
 

@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.poecpoec.agence;
+package com.poecpoec.agence.model;
 
 import java.util.ArrayList;
 import java.util.List;

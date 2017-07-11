@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.poecpoec.agence;
+package com.poecpoec.agence.dao;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -10,6 +10,10 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+
+import com.poecpoec.agence.interfaces.IDataRecovery;
+import com.poecpoec.agence.model.Aeroport;
+import com.poecpoec.agence.model.Ville;
 
 /**
  * @author Seme
