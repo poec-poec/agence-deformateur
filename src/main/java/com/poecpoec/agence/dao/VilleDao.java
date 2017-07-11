@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.poecpoec.agence;
+package com.poecpoec.agence.dao;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -10,6 +10,9 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+
+import com.poecpoec.agence.interfaces.IDataRecovery;
+import com.poecpoec.agence.model.Ville;
 
 /**
  * @author Seme
@@ -27,6 +30,7 @@ public class VilleDao implements IDataRecovery<Ville>
 
     /*
      * (non-Javadoc)
+     * 
      * @see com.poecpoec.agence.IDataRecovery#findAll()
      */
     @Override
@@ -39,8 +43,7 @@ public class VilleDao implements IDataRecovery<Ville>
             Class.forName("com.mysql.jdbc.Driver");
             // Etape 2 : création de la connexion
             String dsn = "jdbc:mysql://localhost:3306/agence";
-            Connection connexion = DriverManager.getConnection(dsn, "user",
-                    "password");
+            Connection connexion = DriverManager.getConnection(dsn, "user", "password");
             // Etape 3 : création du statement
             Statement statement = connexion.createStatement();
             // Etape 4 : Exécuter la requête SQL
@@ -65,8 +68,7 @@ public class VilleDao implements IDataRecovery<Ville>
         }
         catch (ClassNotFoundException e)
         {
-            System.out.println(
-                    "Impossible de charger le driver. Vérifier votre classpath.");
+            System.out.println("Impossible de charger le driver. Vérifier votre classpath.");
         }
         catch (SQLException e)
         {
@@ -79,6 +81,7 @@ public class VilleDao implements IDataRecovery<Ville>
 
     /*
      * (non-Javadoc)
+     * 
      * @see com.poecpoec.agence.IDataRecovery#findById(int)
      */
     @Override
@@ -91,8 +94,7 @@ public class VilleDao implements IDataRecovery<Ville>
             Class.forName("com.mysql.jdbc.Driver");
             // Etape 2 : création de la connexion
             String dsn = "jdbc:mysql://localhost:3306/agence";
-            Connection connexion = DriverManager.getConnection(dsn, "user",
-                    "password");
+            Connection connexion = DriverManager.getConnection(dsn, "user", "password");
             // Etape 3 : création du statement
             Statement statement = connexion.createStatement();
             // Etape 4 : Exécuter la requête SQL
@@ -108,8 +110,7 @@ public class VilleDao implements IDataRecovery<Ville>
             }
             else
             {
-                throw new SQLException(
-                        "Aucune ville ne correspond à l'identifiant indiqué.");
+                throw new SQLException("Aucune ville ne correspond à l'identifiant indiqué.");
             }
             // Etape 6 : fermer le résultat
             resultats.close();
@@ -120,8 +121,7 @@ public class VilleDao implements IDataRecovery<Ville>
         }
         catch (ClassNotFoundException e)
         {
-            System.out.println(
-                    "Impossible de charger le driver. Vérifier votre classpath.");
+            System.out.println("Impossible de charger le driver. Vérifier votre classpath.");
         }
         catch (SQLException e)
         {

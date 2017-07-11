@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.poecpoec.agence;
+package com.poecpoec.agence.model;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,14 +11,14 @@ import java.util.List;
  */
 public class Ville
 {
-    /** Identifiant technique */
-    private int idVille;
     /** Liste des aéroports qui desservent la ville */
     private List<Aeroport> aeroports;
+    /** Identifiant technique */
+    private int            idVille;
     /** Nom de la ville */
-    private String nom;
+    private String         nom;
     /** Pays */
-    private String pays;
+    private String         pays;
 
     /**
      * Constructeur par défaut
@@ -73,28 +73,19 @@ public class Ville
     }
 
     /**
-     * @return the id
-     */
-    public int getId()
-    {
-        return idVille;
-    }
-
-    /**
-     * @param id
-     *            the id to set
-     */
-    public void setId(int id)
-    {
-        this.idVille = id;
-    }
-
-    /**
      * @return the aeroportDesservis
      */
     public List<Aeroport> getAeroportDesservis()
     {
         return aeroports;
+    }
+
+    /**
+     * @return the id
+     */
+    public int getId()
+    {
+        return idVille;
     }
 
     /**
@@ -123,6 +114,15 @@ public class Ville
     }
 
     /**
+     * @param id
+     *            the id to set
+     */
+    public void setId(int id)
+    {
+        this.idVille = id;
+    }
+
+    /**
      * @param nom
      *            the nom to set
      */
@@ -142,6 +142,7 @@ public class Ville
 
     /*
      * (non-Javadoc)
+     * 
      * @see java.lang.Object#toString()
      */
     @Override
@@ -149,10 +150,7 @@ public class Ville
     {
         return "Ville [" + (nom != null ? "nom=" + nom + ", " : "")
                 + (pays != null ? "pays=" + pays + ", " : "")
-                + (aeroports != null
-                        ? "aeroportDesservis=" + aeroports
-                        : "")
-                + "]";
+                + (aeroports != null ? "aeroportDesservis=" + aeroports : "") + "]";
     }
 
 }

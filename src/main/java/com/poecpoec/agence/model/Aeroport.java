@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.poecpoec.agence;
+package com.poecpoec.agence.model;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,12 +12,12 @@ import java.util.List;
 public class Aeroport
 {
     /** Identifiant technique */
-    private int idAero;
+    private int         idAero;
 
     /**
      * Nom de l'aéroport
      */
-    private String nom;
+    private String      nom;
 
     /** Villes desservies par l'aéroport */
     private List<Ville> villes;
@@ -129,18 +129,17 @@ public class Aeroport
 
     /*
      * (non-Javadoc)
+     * 
      * @see java.lang.Object#toString()
      */
     @Override
     public String toString()
     {
-        StringBuffer sBuffer = new StringBuffer(
-                "Aeroport [nom= " + this.nom + ", villes=");
+        StringBuffer sBuffer = new StringBuffer("Aeroport [nom= " + this.nom + ", villes=");
         // boucle de parcours des villes desservies
         for (Ville ville : villes)
         {
-            sBuffer.append("[Ville nom=" + ville.getNom() + ", pays="
-                    + ville.getPays() + "],");
+            sBuffer.append("[Ville nom=" + ville.getNom() + ", pays=" + ville.getPays() + "],");
         }
         sBuffer = new StringBuffer(sBuffer.substring(0, sBuffer.length() - 1));
         sBuffer.append("]");
