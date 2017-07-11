@@ -7,8 +7,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.poecpoec.agence.dao.AeroportDao;
+import com.poecpoec.agence.dao.ClientDao;
 import com.poecpoec.agence.dao.VilleDao;
+import com.poecpoec.agence.model.Adresse;
 import com.poecpoec.agence.model.Aeroport;
+import com.poecpoec.agence.model.Client;
 import com.poecpoec.agence.model.Ville;
 
 /**
@@ -93,6 +96,40 @@ public class Main
         // toutes les villes
         List<Ville> villes = villeDao.findAll();
         System.out.println(villes);
+
+        // TEAM MMA
+
+        System.out.println("Test MMA it#1");
+        // IT#1 Création classe Adresse
+        Adresse adresse = new Adresse();
+        adresse.setId(1);
+        adresse.setAdresse("15bis, Allée James Watt");
+        adresse.setCodePostal("33700");
+        adresse.setVille("Mérignac");
+        adresse.setPays("France");
+        System.out.println(adresse);
+
+        System.out.println("Test MMA it#2");
+        // IT#2 Création classe Client + relation adresse.
+        Client client = new Client();
+        client.setAdresse(adresse);
+
+        System.out.println(client);
+
+        System.out.println("Test MMA it#3");
+        // IT#3 Création client DAO.
+        List<Client> clients = new ArrayList<>();
+        ClientDao clientDao = new ClientDao();
+        clients = clientDao.findAll();
+        System.out.println(clients);
+
+        System.out.println("Test MMA it#4");
+        // IT#4 Mise en place des adresses crée
+        for (int i = 0; i < clients.size(); i++)
+        {
+            clients.get(i).setAdresse(adresse);
+        }
+        System.out.println(clients);
 
     }
 
