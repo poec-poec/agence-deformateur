@@ -25,7 +25,7 @@ public class Main
      */
     public static void main(String[] args)
     {
-        // testNonRegression();
+        testNonRegression();
         //
         // // TEAM MMA
         // System.out.println("Test MMA");
