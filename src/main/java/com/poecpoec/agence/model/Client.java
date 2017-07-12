@@ -20,6 +20,7 @@ public class Client
     private String  nom;
     private String  numeroFax;
     private String  numeroTel;
+    private String  prenom;
 
     /**
      * 
@@ -142,6 +143,16 @@ public class Client
     {
         return "Client [id=" + id + ", nom=" + nom + ", numeroTel=" + numeroTel + ", email=" + email
                 + ", adresse=" + adresse + "]";
+    }
+
+    public String getPrenom()
+    {
+        return prenom;
+    }
+
+    public void setPrenom(String prenom)
+    {
+        this.prenom = prenom;
     }
 
 }
