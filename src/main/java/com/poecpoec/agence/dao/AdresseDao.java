@@ -21,7 +21,7 @@ public class AdresseDao implements IDataRecovery<Adresse>
 
         try
         {
-            // Etape 1 : chargement du driver
+            // Etape 1 : chargement du driver MySQL
             Class.forName("com.mysql.jdbc.Driver");
             // Etape 2 : création de la connexion
             String dsn = "jdbc:mysql://localhost:3306/agence";
