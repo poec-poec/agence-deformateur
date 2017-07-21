@@ -1,32 +1,32 @@
-/**
- * 
- */
 package com.poecpoec.agence.dao;
 
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.poecpoec.agence.dao.ConnexionVoyageDao.ConnexionVoyageDaoStatic;
 import com.poecpoec.agence.interfaces.IDataRecovery;
 import com.poecpoec.agence.model.Aeroport;
 import com.poecpoec.agence.model.Ville;
 
 /**
- * @author Seme
+ * @author Nordine
  */
 public class AeroportDao implements IDataRecovery<Aeroport>
 {
+    // DAO utilisé
+    private VilleDao villeDao;
 
     /**
      * Data Access Object
      */
     public AeroportDao()
     {
-        // TODO Auto-generated constructor stub
+        // j'instancie la Dao de l'entité ville
+        this.villeDao = new VilleDao();
     }
 
     /**
@@ -36,26 +36,21 @@ public class AeroportDao implements IDataRecovery<Aeroport>
      */
     public List<Aeroport> findAll()
     {
-        // DAO utilisés
-        VilleDao villeDao = new VilleDao();
-
         List<Aeroport> aeroports = new ArrayList<>();
         try
         {
-            // Etape 1 : chargement du driver
-            Class.forName("com.mysql.jdbc.Driver");
-            // Etape 2 : création de la connexion
-            String dsn = "jdbc:mysql://localhost:3306/agence";
-            Connection connexion = DriverManager.getConnection(dsn, "user", "password");
-            // Etape 3 : création du statement
+            // je récupère la connexion à la BDD
+            Connection connexion = ConnexionVoyageDaoStatic.getConnexion();
+            // création du statement
             Statement statement = connexion.createStatement();
-            // Etape 4 : Exécuter la requête SQL
+            // Exécuter la requête SQL
             ResultSet resultats = statement.executeQuery("SELECT * FROM aeroport");
-            // Etape 5 : boucle de parcours des résultats
+            // boucle de parcours des résultats
             while (resultats.next())
             {
                 // je crée un aéroport vide
                 Aeroport aeroport = new Aeroport();
+                // je l'enrichis des données de la BDD
                 aeroport.setNom(resultats.getString("nom"));
                 aeroport.setIdAero(resultats.getInt("idAero"));
 
@@ -66,7 +61,7 @@ public class AeroportDao implements IDataRecovery<Aeroport>
                 // donné
                 ResultSet idDesVilles = statementVilles.executeQuery("SELECT idVille"
                         + " FROM aeroport_ville" + " WHERE idAero = " + aeroport.getIdAero());
-                // on parcours les id
+                // on parcourt les id
                 while (idDesVilles.next())
                 {
                     // je récupère juste l'id
@@ -75,7 +70,7 @@ public class AeroportDao implements IDataRecovery<Aeroport>
                     // findById
                     // qui prend en paramètre l'idVille qu'on vient d'extraire
                     // du ResultSet
-                    Ville ville = villeDao.findById(idVille);
+                    Ville ville = this.villeDao.findById(idVille);
                     // j'insère la ville dans la liste des villes desservies
                     aeroport.ajouterVille(ville);
                 }
@@ -90,25 +85,20 @@ public class AeroportDao implements IDataRecovery<Aeroport>
             } // fin de la boucle de parcours des résultats du SELECT * FROM
               // aeroport
 
-            // Etape 6 : fermer le résultat
+            // fermer le résultat
             resultats.close();
-            // Etape 7 : fermer le statement
+            // fermer le statement
             statement.close();
-            // Etape 8 : fermer la connexion
-            connexion.close();
-        }
-        catch (ClassNotFoundException e)
-        {
-            System.out.println("Impossible de charger le driver. Vérifier votre classpath.");
         }
         catch (SQLException e)
         {
             System.out.println("Erreur SQL. Voir ci-après.");
             System.out.println(e.getMessage());
         }
+        // on demande la fermeture de la connexion
+        ConnexionVoyageDaoStatic.closeConnexion();
         // je retourne la liste des aéroports trouvés dans la BDD
         return aeroports;
-
     }
 
     /*
@@ -119,25 +109,20 @@ public class AeroportDao implements IDataRecovery<Aeroport>
     @Override
     public Aeroport findById(int id)
     {
-        // DAO utilisés
-        VilleDao villeDao = new VilleDao();
         Aeroport aeroport = new Aeroport();
         try
         {
-            // Etape 1 : chargement du driver
-            Class.forName("com.mysql.jdbc.Driver");
-            // Etape 2 : création de la connexion
-            String dsn = "jdbc:mysql://localhost:3306/agence";
-            Connection connexion = DriverManager.getConnection(dsn, "user", "password");
-            // Etape 3 : création du statement
+            // je récupère la connexion à la BDD
+            Connection connexion = ConnexionVoyageDaoStatic.getConnexion();
+            // création du statement
             Statement statement = connexion.createStatement();
-            // Etape 4 : Exécuter la requête SQL
+            // Exécuter la requête SQL
             ResultSet resultats = statement
                     .executeQuery("SELECT * FROM aeroport WHERE idAero = " + id);
-            // Etape 5 : boucle de parcours des résultats
+            // boucle de parcours des résultats
             if (resultats.next())
             {
-                // je crée un aéroport vide
+                // je l'enrichis des données de la BDD
                 aeroport.setIdAero(id);
                 aeroport.setNom(resultats.getString("nom"));
                 // je vais chercher dans la table de lien les id des villes
@@ -156,7 +141,7 @@ public class AeroportDao implements IDataRecovery<Aeroport>
                     // findById
                     // qui prend en paramètre l'idVille qu'on vient d'extraire
                     // du ResultSet
-                    Ville ville = villeDao.findById(idVille);
+                    Ville ville = this.villeDao.findById(idVille);
                     // j'insère la ville dans la liste des villes desservies
                     aeroport.ajouterVille(ville);
                 }
@@ -169,24 +154,19 @@ public class AeroportDao implements IDataRecovery<Aeroport>
             {
                 throw new SQLException("Aucun aéroport ne correspond à l'identifiant indiqué.");
             }
-            // Etape 6 : fermer le résultat
+            // fermer le résultat
             resultats.close();
-            // Etape 7 : fermer le statement
+            // fermer le statement
             statement.close();
-            // Etape 8 : fermer la connexion
-            connexion.close();
-        }
-        catch (ClassNotFoundException e)
-        {
-            System.out.println("Impossible de charger le driver. Vérifier votre classpath.");
         }
         catch (SQLException e)
         {
             System.out.println("Erreur SQL. Voir ci-après.");
             System.out.println(e.getMessage());
         }
+        // je demande la fermeture de la connexion
+        ConnexionVoyageDaoStatic.closeConnexion();
         // je retourne l'aéroport trouvé dans la BDD
         return aeroport;
     }
-
 }
