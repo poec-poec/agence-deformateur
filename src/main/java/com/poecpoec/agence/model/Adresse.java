@@ -3,7 +3,7 @@ package com.poecpoec.agence.model;
 /**
  * Classe métier ou Objet métier ou PlainOldJavaObject
  * 
- * @author Administrateur
+ * @author Seme
  *
  */
 public class Adresse
@@ -25,27 +25,27 @@ public class Adresse
     // Getters(accesseurs) et Setters(mutateurs)
     public String getAdresse()
     {
-        return adresse;
+        return this.adresse;
     }
 
     public String getCodePostal()
     {
-        return codePostal;
+        return this.codePostal;
     }
 
     public int getId()
     {
-        return id;
+        return this.id;
     }
 
     public String getPays()
     {
-        return pays;
+        return this.pays;
     }
 
     public String getVille()
     {
-        return ville;
+        return this.ville;
     }
 
     public void setAdresse(String adresse)
@@ -76,8 +76,8 @@ public class Adresse
     @Override
     public String toString()
     {
-        return "Adresse ID " + id + " : " + adresse + " " + codePostal + " - " + ville + " [" + pays
-                + "]";
+        return "Adresse ID " + this.id + " : " + this.adresse + " " + this.codePostal + " - "
+                + this.ville + " [" + this.pays + "]";
     }
 
 }
