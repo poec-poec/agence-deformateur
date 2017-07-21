@@ -11,6 +11,11 @@ import java.util.List;
 import com.poecpoec.agence.interfaces.IDataRecovery;
 import com.poecpoec.agence.model.Adresse;
 
+/**
+ * 
+ * @author Administrateur
+ *
+ */
 public class AdresseDao implements IDataRecovery<Adresse>
 {
 
