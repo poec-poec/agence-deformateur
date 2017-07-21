@@ -141,8 +141,8 @@ public class Client
     @Override
     public String toString()
     {
-        return "Client [id=" + id + ", nom=" + nom + ", numeroTel=" + numeroTel + ", email=" + email
-                + ", adresse=" + adresse + "]";
+        return "Client [id=" + id + ", nom=" + nom + ", numeroTel=" + numeroTel + ", numeroFax="
+                + numeroFax + ", email=" + email + ", adresse=" + adresse + "]";
     }
 
     public String getPrenom()

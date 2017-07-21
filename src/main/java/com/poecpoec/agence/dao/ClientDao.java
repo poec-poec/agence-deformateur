@@ -58,6 +58,7 @@ public class ClientDao implements IDataRecovery<Client>
                 client.setNom(resultats.getString("nom"));
                 client.setPrenom(resultats.getString("prenom"));
                 client.setNumeroTel(resultats.getString("telephone"));
+                client.setNumeroFax(resultats.getString("fax"));
                 client.setEmail(resultats.getString("email"));
 
                 // je récupère ensuite son adresse
@@ -115,6 +116,7 @@ public class ClientDao implements IDataRecovery<Client>
                 client.setNom(resultats.getString("nom"));
                 client.setPrenom(resultats.getString("prenom"));
                 client.setNumeroTel(resultats.getString("telephone"));
+                client.setNumeroFax(resultats.getString("fax"));
                 client.setEmail(resultats.getString("email"));
 
                 // je récupère ensuite son adresse
