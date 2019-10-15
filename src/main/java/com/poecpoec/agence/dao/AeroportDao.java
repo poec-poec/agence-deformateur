@@ -22,18 +22,11 @@ public class AeroportDao implements IDataRecovery<Aeroport>
 {
 
     /**
-     * Data Access Object
-     */
-    public AeroportDao()
-    {
-        // TODO Auto-generated constructor stub
-    }
-
-    /**
      * Retourner tous les aéroports de la BDD
      * 
      * @return Liste d'aéroports
      */
+    @Override
     public List<Aeroport> findAll()
     {
         // DAO utilisés

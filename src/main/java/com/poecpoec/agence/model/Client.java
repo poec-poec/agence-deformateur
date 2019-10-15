@@ -23,19 +23,11 @@ public class Client
     private String  prenom;
 
     /**
-     * 
-     */
-    public Client()
-    {
-        // this.adresse = adresse;
-    }
-
-    /**
      * @return the adresse
      */
     public Adresse getAdresse()
     {
-        return adresse;
+        return this.adresse;
     }
 
     /**
@@ -43,7 +35,7 @@ public class Client
      */
     public String getEmail()
     {
-        return email;
+        return this.email;
     }
 
     // Les getters et les setters.
@@ -52,7 +44,7 @@ public class Client
      */
     public int getId()
     {
-        return id;
+        return this.id;
     }
 
     /**
@@ -60,7 +52,7 @@ public class Client
      */
     public String getNom()
     {
-        return nom;
+        return this.nom;
     }
 
     /**
@@ -68,7 +60,7 @@ public class Client
      */
     public String getNumeroFax()
     {
-        return numeroFax;
+        return this.numeroFax;
     }
 
     /**
@@ -76,7 +68,12 @@ public class Client
      */
     public String getNumeroTel()
     {
-        return numeroTel;
+        return this.numeroTel;
+    }
+
+    public String getPrenom()
+    {
+        return this.prenom;
     }
 
     /**
@@ -133,6 +130,11 @@ public class Client
         this.numeroTel = numeroTel;
     }
 
+    public void setPrenom(String prenom)
+    {
+        this.prenom = prenom;
+    }
+
     /*
      * (non-Javadoc)
      * 
@@ -141,18 +143,8 @@ public class Client
     @Override
     public String toString()
     {
-        return "Client [id=" + id + ", nom=" + nom + ", numeroTel=" + numeroTel + ", email=" + email
-                + ", adresse=" + adresse + "]";
-    }
-
-    public String getPrenom()
-    {
-        return prenom;
-    }
-
-    public void setPrenom(String prenom)
-    {
-        this.prenom = prenom;
+        return "Client [id=" + this.id + ", nom=" + this.nom + ", numeroTel=" + this.numeroTel
+                + ", email=" + this.email + ", adresse=" + this.adresse + "]";
     }
 
 }
