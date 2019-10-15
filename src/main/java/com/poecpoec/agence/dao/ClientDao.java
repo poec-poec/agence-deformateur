@@ -19,13 +19,6 @@ import com.poecpoec.agence.model.Client;
 
 public class ClientDao implements IDataRecovery<Client>
 {
-    /**
-     * Data Access Objet
-     */
-    public ClientDao()
-    {
-
-    }
 
     /**
      * Retourner tous les clients de la BDD
