@@ -20,14 +20,6 @@ import com.poecpoec.agence.model.Ville;
 public class VilleDao implements IDataRecovery<Ville>
 {
 
-    /**
-     * 
-     */
-    public VilleDao()
-    {
-        // TODO Auto-generated constructor stub
-    }
-
     /*
      * (non-Javadoc)
      * 

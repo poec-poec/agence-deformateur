@@ -16,12 +16,6 @@ public class Adresse
     private String pays;
     private String ville;
 
-    // Constructeur
-    public Adresse()
-    {
-
-    }
-
     // Getters(accesseurs) et Setters(mutateurs)
     public String getAdresse()
     {
